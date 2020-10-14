@@ -90,7 +90,7 @@ $(function () {
         });
     }
     //删除
-    $('tbody').on('click', '#btn-delete', function () {
+    $('tbody').on('click', '.btn-delete', function () {
         var Id = $(this).attr('data-id');
         layer.confirm('真的要删除么?', function (index) {
             $.ajax({
@@ -101,8 +101,9 @@ $(function () {
                         return layui.layer.msg(res.message);
                     }
                     layui.layer.msg('文章删除成功啦');
+
+                    if ($('.btn-delete').length === 1 && q.pagenum > 1) q.pagenum--;
                     initTable();
-                    if ($('#btn-delete').length == 1 && q.pagenum > 1) q.pagenum--;
                 }
 
             })
